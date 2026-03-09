@@ -192,7 +192,7 @@ View a person's expanded assignment schedule for a date range.
 
 ### Usage
 ```bash
-runncli [GLOBAL_OPTIONS] list-assignments --person-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD [--project-ids IDS] [--exclude-project-ids IDS]
+runncli [GLOBAL_OPTIONS] list-assignments --person-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD [--project-ids IDS] [--exclude-project-ids IDS] [--sum]
 ```
 
 ### Options
@@ -203,7 +203,7 @@ runncli [GLOBAL_OPTIONS] list-assignments --person-id ID --start-date YYYY-MM-DD
 | `--end-date` | `string` | **Required.** End of date range (YYYY-MM-DD, inclusive). |
 | `--project-ids` | `string` | Comma-separated list of projectIds to include. |
 | `--exclude-project-ids` | `string` | Comma-separated list of projectIds to skip. |
-| `--sum` | `flag` | Output sum of assigned minutes. (Included by default) |
+| `--sum` | `flag` | Output sum of assigned minutes. |
 
 > [!IMPORTANT]  
 > If your comma-separated lists contain spaces, you **must** wrap them in quotes to ensure they are parsed correctly by 
@@ -217,7 +217,7 @@ View logged actuals for a person in a date range.
 
 ### Usage
 ```bash
-runncli [GLOBAL_OPTIONS] list-actuals --person-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD [--project-ids IDS] [--exclude-project-ids IDS]
+runncli [GLOBAL_OPTIONS] list-actuals --person-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD [--project-ids IDS] [--exclude-project-ids IDS] [--sum]
 ```
 
 ### Options
@@ -228,7 +228,7 @@ runncli [GLOBAL_OPTIONS] list-actuals --person-id ID --start-date YYYY-MM-DD --e
 | `--end-date` | `string` | **Required.** End of date range (YYYY-MM-DD, inclusive). |
 | `--project-ids` | `string` | Comma-separated list of projectIds to include. |
 | `--exclude-project-ids` | `string` | Comma-separated list of projectIds to skip. |
-| `--sum` | `flag` | Output sum of actual minutes. (Included by default) |
+| `--sum` | `flag` | Output sum of actual minutes. |
 
 > [!IMPORTANT]  
 > If your comma-separated lists contain spaces, you **must** wrap them in quotes to ensure they are parsed correctly by 
@@ -243,7 +243,7 @@ existing assignment for each date to determine the `roleId` and billing status.
 
 ### Usage
 ```bash
-runncli [GLOBAL_OPTIONS] set-actuals --person-id ID --project-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD --minutes MINS [--force-update]
+runncli [GLOBAL_OPTIONS] set-actuals --person-id ID --project-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD --minutes MINS [--force-update]  [--sum]
 ```
 
 ### Options
@@ -255,6 +255,7 @@ runncli [GLOBAL_OPTIONS] set-actuals --person-id ID --project-id ID --start-date
 | `--end-date` | `string` | **Required.** End of date range (YYYY-MM-DD, inclusive). |
 | `--minutes` | `int` | **Required.** Number of minutes to set for each day. |
 | `--force-update` | `flag` | Actually write changes to the API. Defaults to dry-run mode. |
+| `--sum`                 | `flag` | Output sum of actual minutes. |
 
 ---
 
@@ -267,7 +268,7 @@ updates (or would update) the actual to match the plan.
 ### Usage
 
 ```bash
-runncli [GLOBAL_OPTIONS] set-actuals-to-assigned [COMMAND_OPTIONS]
+runncli [GLOBAL_OPTIONS] set-actuals-to-assigned --person-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD --project-ids IDS --exclude-project-ids IDS [--force-update] [--sum]
 ```
 
 ### Options

@@ -5,7 +5,7 @@ from dateutil.rrule import rrule, DAILY, MO, TU, WE, TH, FR
 from ..logger import logger
 from ..client import RunnClient
 from ..models import Actual
-from ..utils import format_minutes_short
+from ..utils import format_minutes_short, format_minutes_long
 
 @click.command()
 @click.option('--person-id', type=int, required=True, help='Runn personId for the target person')
@@ -14,8 +14,9 @@ from ..utils import format_minutes_short
 @click.option('--end-date', type=str, required=True, help='End of date range (YYYY-MM-DD, inclusive)')
 @click.option('--minutes', type=int, required=True, help='Number of minutes to set for each day')
 @click.option('--force-update', is_flag=True, help='Actually write changes to the API')
+@click.option('--sum', 'sum_opt', is_flag=True, default=False, help='Output sum of actual minutes')
 @click.pass_context
-def set_actuals(ctx, person_id, project_id, start_date, end_date, minutes, force_update):
+def set_actuals(ctx, person_id, project_id, start_date, end_date, minutes, force_update, sum_opt):
     """Set actual minutes for a person/project over a date range, only if an assignment exists."""
     
     json_output = ctx.obj.get('json_output', False)
@@ -148,6 +149,11 @@ def set_actuals(ctx, person_id, project_id, start_date, end_date, minutes, force
         "mode": "LIVE" if force_update else "DRY RUN"
     }
 
+    if sum_opt:
+        total_minutes = updated_count * minutes
+        summary["totalMinutes"] = total_minutes
+        summary["totalTime"] = format_minutes_long(total_minutes)
+
     if json_output:
         click.echo(json.dumps({
             "commandOutput": output_rows,
@@ -169,3 +175,6 @@ def set_actuals(ctx, person_id, project_id, start_date, end_date, minutes, force
         click.echo(f"{display_date:<22} {str(row['projectId']):<10} {row['projectName'][:29]:<30} {row['action']}")
 
     click.echo(f"\nSummary: {updated_count} {'set' if force_update else 'would be set'}, {skipped_count} skipped (no assignment)" + (f", {error_count} errors" if force_update and error_count > 0 else ""))
+
+    if sum_opt:
+        click.echo(f"Total: {updated_count} actual entries total {format_minutes_long(updated_count * minutes)}")
