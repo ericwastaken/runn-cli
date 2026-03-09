@@ -10,34 +10,12 @@ for dependency management.
 
 The primary purpose of `runncli` is to automate and streamline interactions with the Runn.io API. 
 The current version includes:
-- `set-actuals-to-assigned`: Synchronize planned assignments with logged actuals.
 - `list-projects`: List all projects with optional archived project inclusion.
 - `list-people`: List all people with optional email and name filters.
 - `list-assignments`: View expanded daily assignments for a specific person and date range.
 - `list-actuals`: View logged actuals for a specific person and date range.
 - `set-actuals`: Manually set actual minutes for a person/project over a date range (requires an existing assignment).
-
----
-
-## Command Reference: `set-actuals`
-
-Manually set actual minutes for a person and project for each weekday in a date range. The command requires an 
-existing assignment for each date to determine the `roleId` and billing status.
-
-### Usage
-```bash
-runncli [GLOBAL_OPTIONS] set-actuals --person-id ID --project-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD --minutes MINS [--force-update]
-```
-
-### Options
-| Parameter | Type | Description |
-|---|---|---|
-| `--person-id` | `int` | **Required.** Runn personId for the target person. |
-| `--project-id` | `int` | **Required.** Runn projectId for the target project. |
-| `--start-date` | `string` | **Required.** Start of date range (YYYY-MM-DD, inclusive). |
-| `--end-date` | `string` | **Required.** End of date range (YYYY-MM-DD, inclusive). |
-| `--minutes` | `int` | **Required.** Number of minutes to set for each day. |
-| `--force-update` | `flag` | Actually write changes to the API. Defaults to dry-run mode. |
+- `set-actuals-to-assigned`: Synchronize planned assignments with logged actuals.
 
 ---
 
@@ -157,7 +135,7 @@ Controls the amount of detail displayed during command execution. Must be one of
 **Example:**
 
 ```bash
-runncli --log-level DEBUG [sub-command] [sub-command arguments]
+runncli --log-level DEBUG [command] [COMMAND_OPTIONS]
 ```
 
 ### `--json`
@@ -170,7 +148,7 @@ If this argument is passed, the output will be structured as compact JSON:
 **Example:**
 
 ```bash
-runncli --json [sub-command] [sub-command arguments]
+runncli --json [command] [COMMAND_OPTIONS]
 ```
 
 ## Command Reference: `list-projects`
@@ -227,6 +205,10 @@ runncli [GLOBAL_OPTIONS] list-assignments --person-id ID --start-date YYYY-MM-DD
 | `--exclude-project-ids` | `string` | Comma-separated list of projectIds to skip. |
 | `--sum` | `flag` | Output sum of assigned minutes. (Included by default) |
 
+> [!IMPORTANT]  
+> If your comma-separated lists contain spaces, you **must** wrap them in quotes to ensure they are parsed correctly by 
+> your shell.
+
 ---
 
 ## Command Reference: `list-actuals`
@@ -247,6 +229,32 @@ runncli [GLOBAL_OPTIONS] list-actuals --person-id ID --start-date YYYY-MM-DD --e
 | `--project-ids` | `string` | Comma-separated list of projectIds to include. |
 | `--exclude-project-ids` | `string` | Comma-separated list of projectIds to skip. |
 | `--sum` | `flag` | Output sum of actual minutes. (Included by default) |
+
+> [!IMPORTANT]  
+> If your comma-separated lists contain spaces, you **must** wrap them in quotes to ensure they are parsed correctly by 
+> your shell.
+
+---
+
+## Command Reference: `set-actuals`
+
+Manually set actual minutes for a person and project for each weekday in a date range. The command requires an 
+existing assignment for each date to determine the `roleId` and billing status.
+
+### Usage
+```bash
+runncli [GLOBAL_OPTIONS] set-actuals --person-id ID --project-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD --minutes MINS [--force-update]
+```
+
+### Options
+| Parameter | Type | Description |
+|---|---|---|
+| `--person-id` | `int` | **Required.** Runn personId for the target person. |
+| `--project-id` | `int` | **Required.** Runn projectId for the target project. |
+| `--start-date` | `string` | **Required.** Start of date range (YYYY-MM-DD, inclusive). |
+| `--end-date` | `string` | **Required.** End of date range (YYYY-MM-DD, inclusive). |
+| `--minutes` | `int` | **Required.** Number of minutes to set for each day. |
+| `--force-update` | `flag` | Actually write changes to the API. Defaults to dry-run mode. |
 
 ---
 
@@ -273,6 +281,10 @@ runncli [GLOBAL_OPTIONS] set-actuals-to-assigned [COMMAND_OPTIONS]
 | `--exclude-project-ids` | `string` | Comma-separated list of projectIds to skip. |
 | `--force-update`        | `flag` | Actually write changes to the API. Defaults to dry-run mode. |
 | `--sum`                 | `flag` | Output sum of planned and actual minutes. |
+
+> [!IMPORTANT]  
+> If your comma-separated lists contain spaces, you **must** wrap them in quotes to ensure they are parsed correctly by 
+> your shell.
 
 ### Examples
 
@@ -302,10 +314,6 @@ runncli set-actuals-to-assigned \
   --end-date 2026-03-13 \
   --project-ids "1849539, 1849543"
 ```
-
-> [!IMPORTANT]  
-> If your comma-separated lists contain spaces, you **must** wrap them in quotes to ensure they are parsed correctly by 
-> your shell.
 
 ---
 

@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d11819-f809-49cb-b2a4-25d40e5495ba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/python-runn-cli.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+    <list default="true" id="65d11819-f809-49cb-b2a4-25d40e5495ba" name="Changes" comment="README update.">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +24,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -90,14 +85,41 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1773023829953</updated>
-      <workItem from="1773023830954" duration="10196000" />
+      <workItem from="1773023830954" duration="10648000" />
     </task>
+    <task id="LOCAL-00001" summary="Python based CLI to manage the RUNN.IO API. Initial version.">
+      <option name="closed" value="true" />
+      <created>1773035892120</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1773035892120</updated>
+    </task>
+    <task id="LOCAL-00002" summary="README update.">
+      <option name="closed" value="true" />
+      <created>1773035957244</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1773035957244</updated>
+    </task>
+    <task id="LOCAL-00003" summary="README update.">
+      <option name="closed" value="true" />
+      <created>1773036104214</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1773036104214</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Python based CLI to manage the RUNN.IO API. Initial version." />
+    <MESSAGE value="README update." />
+    <option name="LAST_COMMIT_MESSAGE" value="README update." />
   </component>
 </project>
