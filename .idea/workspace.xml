@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d11819-f809-49cb-b2a4-25d40e5495ba" name="Changes" comment="README update.">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="65d11819-f809-49cb-b2a4-25d40e5495ba" name="Changes" comment="README update. Support for --sum in set-actuals." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +83,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1773023829953</updated>
-      <workItem from="1773023830954" duration="10648000" />
+      <workItem from="1773023830954" duration="11258000" />
     </task>
     <task id="LOCAL-00001" summary="Python based CLI to manage the RUNN.IO API. Initial version.">
       <option name="closed" value="true" />
@@ -111,7 +109,23 @@
       <option name="project" value="LOCAL" />
       <updated>1773036104214</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="README update.">
+      <option name="closed" value="true" />
+      <created>1773036516887</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1773036516887</updated>
+    </task>
+    <task id="LOCAL-00005" summary="README update. Support for --sum in set-actuals.">
+      <option name="closed" value="true" />
+      <created>1773036930103</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1773036930103</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +134,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Python based CLI to manage the RUNN.IO API. Initial version." />
     <MESSAGE value="README update." />
-    <option name="LAST_COMMIT_MESSAGE" value="README update." />
+    <MESSAGE value="README update. Support for --sum in set-actuals." />
+    <option name="LAST_COMMIT_MESSAGE" value="README update. Support for --sum in set-actuals." />
   </component>
 </project>
