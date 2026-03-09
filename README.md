@@ -3,6 +3,8 @@
 `runncli` is a multi-command CLI tool for interacting with the [Runn.io API](https://runn.io). It is built with `click` and uses `uv` 
 for dependency management.
 
+> **Note:** This project is not affiliated with Runn.io in any way.
+
 ## Overview
 
 The primary purpose of `runncli` is to automate and streamline interactions with the Runn.io API. 
