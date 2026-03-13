@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d11819-f809-49cb-b2a4-25d40e5495ba" name="Changes" comment="workspace files update.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
-    </list>
+    <list default="true" id="65d11819-f809-49cb-b2a4-25d40e5495ba" name="Changes" comment="Exclude personal directory from tracking and updates to workspace files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,6 +65,9 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecapUselessUpdatesCounter">
+    <option name="suspendCountdown" value="9" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -92,7 +90,7 @@
       <updated>1773023829953</updated>
       <workItem from="1773023830954" duration="11523000" />
       <workItem from="1773293051438" duration="142000" />
-      <workItem from="1773442170540" duration="728000" />
+      <workItem from="1773442170540" duration="1404000" />
     </task>
     <task id="LOCAL-00001" summary="Python based CLI to manage the RUNN.IO API. Initial version.">
       <option name="closed" value="true" />
@@ -142,7 +140,23 @@
       <option name="project" value="LOCAL" />
       <updated>1773037031074</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update workspace files, add build-system config to pyproject.toml, and enhance README.">
+      <option name="closed" value="true" />
+      <created>1773442925678</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1773442925678</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Exclude personal directory from tracking and updates to workspace files">
+      <option name="closed" value="true" />
+      <created>1773443083035</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1773443083035</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +167,8 @@
     <MESSAGE value="README update." />
     <MESSAGE value="README update. Support for --sum in set-actuals." />
     <MESSAGE value="workspace files update." />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace files update." />
+    <MESSAGE value="Update workspace files, add build-system config to pyproject.toml, and enhance README." />
+    <MESSAGE value="Exclude personal directory from tracking and updates to workspace files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exclude personal directory from tracking and updates to workspace files" />
   </component>
 </project>
