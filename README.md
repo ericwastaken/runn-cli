@@ -46,6 +46,11 @@ If you just want to run the tool without modifying its source code, follow these
 
 3.  **Run the tool**:
     Use `uv run` to execute the CLI directly from the source. `uv` will automatically handle the environment and dependencies.
+
+    > [!IMPORTANT]
+    > If this is your first time running the tool, `uv` will automatically sync your environment and install the 
+    > `runncli` command.
+
     ```bash
     # Show help
     uv run runncli --help
