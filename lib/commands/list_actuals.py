@@ -85,13 +85,20 @@ def list_actuals(ctx, person_id, start_date, end_date, project_ids, exclude_proj
         weekday_str = dt_obj.strftime("%A")
         project_name = project_names.get(a.projectId, f"ID:{a.projectId}")
         total_minutes = a.billableMinutes + a.nonbillableMinutes
+        notes = []
+        if a.billableNote:
+            notes.append(f"[B] {a.billableNote}")
+        if a.nonbillableNote:
+            notes.append(f"[NB] {a.nonbillableNote}")
+        note_str = "; ".join(notes)
         
         display_items.append({
             "date": date_str,
             "weekday": weekday_str,
             "projectId": a.projectId,
             "projectName": project_name,
-            "total": total_minutes
+            "total": total_minutes,
+            "note": note_str
         })
 
     # Sort by project name then by date
@@ -111,11 +118,11 @@ def list_actuals(ctx, person_id, start_date, end_date, project_ids, exclude_proj
         }))
         return
 
-    click.echo(f"{'Date':<22} {'ID':<10} {'Project':<30} {'Actual'}")
-    click.echo(f"{'-'*20:<22} {'-'*9:<10} {'-'*29:<30} {'-'*7}")
+    click.echo(f"{'Date':<22} {'ID':<10} {'Project':<30} {'Actual':<10} {'Note'}")
+    click.echo(f"{'-'*20:<22} {'-'*9:<10} {'-'*29:<30} {'-'*7:<10} {'-'*10}")
     
     for item in display_items:
         display_date = f"{item['date']} {item['weekday']}"
-        click.echo(f"{display_date:<22} {str(item['projectId']):<10} {item['projectName'][:29]:<30} {item['total']} min")
+        click.echo(f"{display_date:<22} {str(item['projectId']):<10} {item['projectName'][:29]:<30} {item['total']:<10} {item['note']}")
 
     click.echo(f"\nTotal: {total_count} actual entries total {format_minutes_long(total_actuals)}")

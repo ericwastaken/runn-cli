@@ -13,10 +13,11 @@ from ..utils import format_minutes_short, format_minutes_long
 @click.option('--end-date', type=str, required=True, help='End of date range (YYYY-MM-DD, inclusive)')
 @click.option('--project-ids', type=str, help='Comma-separated list of projectIds to include')
 @click.option('--exclude-project-ids', type=str, help='Comma-separated list of projectIds to skip')
+@click.option('--note', type=str, help='Note to add to the updated time entries')
 @click.option('--force-update', is_flag=True, help='Actually write changes to the API')
 @click.option('--sum', 'sum_opt', is_flag=True, default=False, help='Output sum of planned and actual minutes')
 @click.pass_context
-def set_actuals_to_assigned(ctx, person_id, start_date, end_date, project_ids, exclude_project_ids, force_update, sum_opt, client=None):
+def set_actuals_to_assigned(ctx, person_id, start_date, end_date, project_ids, exclude_project_ids, note, force_update, sum_opt, client=None):
     """Compare planned assignments against logged actuals and update if needed."""
     
     json_output = ctx.obj.get('json_output', False)
@@ -217,7 +218,9 @@ def set_actuals_to_assigned(ctx, person_id, start_date, end_date, project_ids, e
                 roleId=assigned_info["roleId"],
                 date=date_str,
                 billableMinutes=planned if assigned_info["isBillable"] else 0,
-                nonbillableMinutes=planned if not assigned_info["isBillable"] else 0
+                nonbillableMinutes=planned if not assigned_info["isBillable"] else 0,
+                billableNote=note if assigned_info["isBillable"] else None,
+                nonbillableNote=note if not assigned_info["isBillable"] else None
             )
             updates.append(new_actual)
             updated_count += 1

@@ -117,7 +117,9 @@ class RunnClient:
             roleId=i["roleId"],
             date=i["date"],
             billableMinutes=i.get("billableMinutes", 0),
-            nonbillableMinutes=i.get("nonbillableMinutes", 0)
+            nonbillableMinutes=i.get("nonbillableMinutes", 0),
+            billableNote=i.get("billableNote"),
+            nonbillableNote=i.get("nonbillableNote")
         ) for i in items]
 
     def get_projects(self, include_archived: bool = False, name_filter: Optional[str] = None) -> Dict[int, str]:
@@ -152,7 +154,9 @@ class RunnClient:
             "projectId": actual.projectId,
             "roleId": actual.roleId,
             "billableMinutes": actual.billableMinutes,
-            "nonbillableMinutes": actual.nonbillableMinutes
+            "nonbillableMinutes": actual.nonbillableMinutes,
+            "billableNote": actual.billableNote,
+            "nonbillableNote": actual.nonbillableNote
         }
         return self._request("POST", "/actuals/", json=payload)
 
@@ -174,7 +178,9 @@ class RunnClient:
                     "projectId": a.projectId,
                     "roleId": a.roleId,
                     "billableMinutes": a.billableMinutes,
-                    "nonbillableMinutes": a.nonbillableMinutes
+                    "nonbillableMinutes": a.nonbillableMinutes,
+                    "billableNote": a.billableNote,
+                    "nonbillableNote": a.nonbillableNote
                 })
             
             logger.info(f"Posting batch of {len(batch)} actuals to /actuals/bulk/...")

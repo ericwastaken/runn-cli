@@ -13,10 +13,11 @@ from ..utils import format_minutes_short, format_minutes_long
 @click.option('--start-date', type=str, required=True, help='Start of date range (YYYY-MM-DD, inclusive)')
 @click.option('--end-date', type=str, required=True, help='End of date range (YYYY-MM-DD, inclusive)')
 @click.option('--minutes', type=int, required=True, help='Number of minutes to set for each day')
+@click.option('--note', type=str, help='Note to add to the time entry')
 @click.option('--force-update', is_flag=True, help='Actually write changes to the API')
 @click.option('--sum', 'sum_opt', is_flag=True, default=False, help='Output sum of actual minutes')
 @click.pass_context
-def set_actuals(ctx, person_id, project_id, start_date, end_date, minutes, force_update, sum_opt):
+def set_actuals(ctx, person_id, project_id, start_date, end_date, minutes, note, force_update, sum_opt):
     """Set actual minutes for a person/project over a date range, only if an assignment exists."""
     
     json_output = ctx.obj.get('json_output', False)
@@ -128,7 +129,9 @@ def set_actuals(ctx, person_id, project_id, start_date, end_date, minutes, force
             roleId=assigned_info["roleId"],
             date=date_str,
             billableMinutes=minutes if assigned_info["isBillable"] else 0,
-            nonbillableMinutes=minutes if not assigned_info["isBillable"] else 0
+            nonbillableMinutes=minutes if not assigned_info["isBillable"] else 0,
+            billableNote=note if assigned_info["isBillable"] else None,
+            nonbillableNote=note if not assigned_info["isBillable"] else None
         )
         updates.append(new_actual)
         updated_count += 1

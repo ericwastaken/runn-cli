@@ -22,6 +22,8 @@ class Actual:
     date: str
     billableMinutes: int
     nonbillableMinutes: int
+    billableNote: Optional[str] = None
+    nonbillableNote: Optional[str] = None
 
 @dataclass
 class Project:
