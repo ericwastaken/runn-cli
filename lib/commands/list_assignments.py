@@ -99,6 +99,7 @@ def list_assignments(ctx, person_id, start_date, end_date, project_ids, exclude_
             schedule.append({
                 "date": date_str,
                 "weekday": weekday_str,
+                "assignmentId": a.assignmentId,
                 "projectId": a.projectId,
                 "projectName": project_name,
                 "planned": a.minutesPerDay
@@ -121,11 +122,11 @@ def list_assignments(ctx, person_id, start_date, end_date, project_ids, exclude_
         }))
         return
 
-    click.echo(f"{'Date':<22} {'ID':<10} {'Project':<30} {'Planned'}")
-    click.echo(f"{'-'*20:<22} {'-'*9:<10} {'-'*29:<30} {'-'*7}")
+    click.echo(f"{'Date':<22} {'Assignment':<12} {'ID':<10} {'Project':<30} {'Planned'}")
+    click.echo(f"{'-'*20:<22} {'-'*11:<12} {'-'*9:<10} {'-'*29:<30} {'-'*7}")
     
     for item in schedule:
         display_date = f"{item['date']} {item['weekday']}"
-        click.echo(f"{display_date:<22} {str(item['projectId']):<10} {item['projectName'][:29]:<30} {item['planned']} min")
+        click.echo(f"{display_date:<22} {str(item['assignmentId']):<12} {str(item['projectId']):<10} {item['projectName'][:29]:<30} {item['planned']} min")
 
     click.echo(f"\nTotal: {total_count} assignment days total {format_minutes_long(total_planned)}")

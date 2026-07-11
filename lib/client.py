@@ -2,7 +2,7 @@ import requests
 import time
 from typing import List, Optional, Dict, Any
 from .logger import logger
-from .models import Assignment, Actual, Project, Person
+from .models import Assignment, AssignmentCreate, Actual, Project, Person
 
 class RunnClient:
     BASE_URL = "https://api.runn.io"
@@ -80,6 +80,25 @@ class RunnClient:
             
         return all_items
 
+    def _assignment_from_api(self, i: Dict[str, Any]) -> Assignment:
+        return Assignment(
+            assignmentId=i["id"],
+            personId=i["personId"],
+            projectId=i["projectId"],
+            roleId=i["roleId"],
+            minutesPerDay=i["minutesPerDay"],
+            startDate=i["startDate"],
+            endDate=i["endDate"],
+            isBillable=i.get("isBillable", True),
+            isNonWorkingDay=i.get("isNonWorkingDay", False),
+            note=i.get("note"),
+            phaseId=i.get("phaseId"),
+            isPlaceholder=i.get("isPlaceholder"),
+            workstreamId=i.get("workstreamId"),
+            createdAt=i.get("createdAt"),
+            updatedAt=i.get("updatedAt")
+        )
+
     def get_assignments(self, person_id: int, start_date: str, end_date: str, project_id: Optional[int] = None) -> List[Assignment]:
         params = {
             "personId": person_id,
@@ -89,17 +108,7 @@ class RunnClient:
         if project_id:
             params["projectId"] = project_id
         items = self._paginate("/assignments/", params)
-        return [Assignment(
-            assignmentId=i["id"],
-            personId=i["personId"],
-            projectId=i["projectId"],
-            roleId=i["roleId"],
-            minutesPerDay=i["minutesPerDay"],
-            startDate=i["startDate"],
-            endDate=i["endDate"],
-            isBillable=i.get("isBillable", True),
-            isNonWorkingDay=i.get("isNonWorkingDay", False)
-        ) for i in items]
+        return [self._assignment_from_api(i) for i in items]
 
     def get_actuals(self, person_id: int, start_date: str, end_date: str, project_id: Optional[int] = None) -> List[Actual]:
         params = {
@@ -159,6 +168,33 @@ class RunnClient:
             "nonbillableNote": actual.nonbillableNote
         }
         return self._request("POST", "/actuals/", json=payload)
+
+    def post_assignment(self, assignment: AssignmentCreate) -> List[Assignment]:
+        payload = {
+            "personId": assignment.personId,
+            "projectId": assignment.projectId,
+            "roleId": assignment.roleId,
+            "startDate": assignment.startDate,
+            "endDate": assignment.endDate,
+            "minutesPerDay": assignment.minutesPerDay,
+            "isNonWorkingDay": assignment.isNonWorkingDay
+        }
+        if assignment.note is not None:
+            payload["note"] = assignment.note
+        if assignment.isBillable is not None:
+            payload["isBillable"] = assignment.isBillable
+        if assignment.phaseId is not None:
+            payload["phaseId"] = assignment.phaseId
+        if assignment.workstreamId is not None:
+            payload["workstreamId"] = assignment.workstreamId
+
+        response = self._request("POST", "/assignments/", json=payload)
+        if isinstance(response, list):
+            return [self._assignment_from_api(i) for i in response]
+        return [self._assignment_from_api(response)]
+
+    def delete_assignment(self, assignment_id: int) -> Dict[str, Any]:
+        return self._request("DELETE", f"/assignments/{assignment_id}/")
 
     def post_actuals_bulk(self, actuals: List[Actual]) -> List[Dict]:
         """

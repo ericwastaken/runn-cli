@@ -12,10 +12,14 @@ The primary purpose of `runncli` is to automate and streamline interactions with
 The current version includes:
 - `list-projects`: List all projects with optional archived project inclusion.
 - `list-people`: List all people with optional email and name filters.
-- `list-assignments`: View expanded daily assignments for a specific person and date range.
+- `list-assignments`: View expanded daily assignments, including assignment IDs, for a specific person and date range.
+- `add-assignment`: Create a project assignment for a person/resource.
+- `delete-assignment`: Delete a single assignment by assignment ID.
 - `list-actuals`: View logged actuals for a specific person and date range.
 - `set-actuals`: Manually set actual minutes for a person/project over a date range (requires an existing assignment).
 - `set-actuals-to-assigned`: Synchronize planned assignments with logged actuals.
+
+Official Runn API reference: https://developer.runn.io/reference/get_activity-log.
 
 ---
 
@@ -194,6 +198,7 @@ runncli [GLOBAL_OPTIONS] list-people [--email EMAIL] [--firstName NAME] [--lastN
 ## Command Reference: `list-assignments`
 
 View a person's expanded assignment schedule for a date range.
+Each output row includes `assignmentId` so you can find the ID needed by `delete-assignment`.
 
 ### Usage
 ```bash
@@ -213,6 +218,102 @@ runncli [GLOBAL_OPTIONS] list-assignments --person-id ID --start-date YYYY-MM-DD
 > [!IMPORTANT]  
 > If your comma-separated lists contain spaces, you **must** wrap them in quotes to ensure they are parsed correctly by 
 > your shell.
+
+---
+
+## Command Reference: `add-assignment`
+
+Create a project assignment for a person/resource. This command is dry-run by default and only writes to Runn when
+`--force-update` is supplied. The Runn API can split one requested assignment into multiple returned assignment segments
+when scheduled leave intersects the date range.
+
+### Usage
+```bash
+runncli [GLOBAL_OPTIONS] add-assignment --person-id ID --project-id ID --role-id ID --start-date YYYY-MM-DD --end-date YYYY-MM-DD --minutes MINS [--note NOTE] [--billable | --non-billable] [--phase-id ID] [--workstream-id ID] [--non-working-day] [--force-update]
+```
+
+### Options
+| Parameter | Type | Description |
+|---|---|---|
+| `--person-id` | `int` | **Required.** Runn personId for the target person/resource. |
+| `--project-id` | `int` | **Required.** Runn projectId for the target project. |
+| `--role-id` | `int` | **Required.** Runn roleId for the assignment. |
+| `--start-date` | `string` | **Required.** Start of date range (YYYY-MM-DD, inclusive). |
+| `--end-date` | `string` | **Required.** End of date range (YYYY-MM-DD, inclusive). |
+| `--minutes` | `int` | **Required.** Number of assigned minutes per day. |
+| `--note` | `string` | Optional assignment note. |
+| `--billable` / `--non-billable` | `flag` | Optional billing status. If omitted, the API default is used. |
+| `--phase-id` | `int` | Optional Runn phaseId. |
+| `--workstream-id` | `int` | Optional Runn workstreamId. |
+| `--non-working-day` | `flag` | Create a non-working-day assignment. Requires `--start-date` and `--end-date` to be the same day. |
+| `--force-update` | `flag` | Actually write changes to the API. Defaults to dry-run mode. |
+
+### Examples
+
+**Dry-run (Safety First)**
+```bash
+runncli add-assignment \
+  --person-id 795204 \
+  --project-id 1849539 \
+  --role-id 12345 \
+  --start-date 2026-03-09 \
+  --end-date 2026-03-13 \
+  --minutes 480
+```
+
+**Live Run (Creating API Assignment)**
+```bash
+runncli add-assignment \
+  --person-id 795204 \
+  --project-id 1849539 \
+  --role-id 12345 \
+  --start-date 2026-03-09 \
+  --end-date 2026-03-13 \
+  --minutes 480 \
+  --force-update
+```
+
+Always run without `--force-update` first and review the planned payload before applying the live write.
+
+---
+
+## Command Reference: `delete-assignment`
+
+Delete one assignment by assignment ID. Use `list-assignments` first to discover the `assignmentId`. This command is
+dry-run by default and only deletes from Runn when `--force-update` is supplied.
+
+### Usage
+```bash
+runncli [GLOBAL_OPTIONS] delete-assignment --assignment-id ID [--force-update]
+```
+
+### Options
+| Parameter | Type | Description |
+|---|---|---|
+| `--assignment-id` | `int` | **Required.** Positive Runn assignment ID to delete. |
+| `--force-update` | `flag` | Actually delete the assignment through the API. Defaults to dry-run mode. |
+
+### Examples
+
+**Find assignment IDs**
+```bash
+runncli list-assignments \
+  --person-id 795204 \
+  --start-date 2026-03-09 \
+  --end-date 2026-03-13
+```
+
+**Dry-run (Safety First)**
+```bash
+runncli delete-assignment --assignment-id 123456
+```
+
+**Live Run (Deleting API Assignment)**
+```bash
+runncli delete-assignment --assignment-id 123456 --force-update
+```
+
+Always run without `--force-update` first and confirm the assignment ID before applying the live delete.
 
 ---
 

@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65d11819-f809-49cb-b2a4-25d40e5495ba" name="Changes" comment="Workspace files update.">
+    <list default="true" id="65d11819-f809-49cb-b2a4-25d40e5495ba" name="Changes" comment="Add support for including notes in time entry updates and listing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/commands/list_actuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commands/list_actuals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/commands/set_actuals.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commands/set_actuals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/commands/set_actuals_to_assigned.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commands/set_actuals_to_assigned.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/commands/list_assignments.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commands/list_assignments.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runncli.py" beforeDir="false" afterPath="$PROJECT_DIR$/runncli.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +24,7 @@
     </option>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="29" />
+    <option name="cachedIndexableFilesCount" value="38" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -34,6 +34,65 @@
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0000921702217054" />
+      <entry key="MS500" value="1.3871768121782075" />
+      <entry key="S2" value="6.916119899210862" />
+      <entry key="S5" value="14.884367951041321" />
+      <entry key="S10" value="20.170136162102207" />
+      <entry key="S30" value="25.121394811752676" />
+      <entry key="S60" value="30.22777671912241" />
+      <entry key="M2" value="54.16797568383229" />
+      <entry key="M5" value="136.0484552418836" />
+      <entry key="M10" value="276.99689061694" />
+      <entry key="M15" value="415.7766111228976" />
+      <entry key="M30" value="715.5429733113593" />
+      <entry key="H1" value="993.2656537193768" />
+      <entry key="H2" value="1186.8165179634611" />
+      <entry key="H4" value="1301.7498858787521" />
+      <entry key="D1" value="1408.3842602333425" />
+      <entry key="W1" value="1427.741764793206" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="2.8233059906695285E-4" />
+      <entry key="MS500" value="0.5662431842410893" />
+      <entry key="S2" value="6.56197497265502" />
+      <entry key="S5" value="14.721470785922937" />
+      <entry key="S10" value="20.08428430310718" />
+      <entry key="S30" value="25.091670582838226" />
+      <entry key="S60" value="30.212629244455243" />
+      <entry key="M2" value="54.15991582578332" />
+      <entry key="M5" value="136.0446012267883" />
+      <entry key="M10" value="276.9944389533316" />
+      <entry key="M15" value="415.77462617769004" />
+      <entry key="M30" value="715.5415927430137" />
+      <entry key="H1" value="993.2647798957825" />
+      <entry key="H2" value="1186.816016360814" />
+      <entry key="H4" value="1301.7496157558076" />
+      <entry key="D1" value="1408.384212213972" />
+      <entry key="W1" value="1427.741757855372" />
+    </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -46,33 +105,34 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SHELLCHECK.PATH": "/Users/eric/Library/Application Support/JetBrains/PyCharm2025.3/plugins/Shell Script/shellcheck",
-    "ai.playground.ignore.import.keys.banner.in.settings": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/Users/eric/ResilioSync/Develop/projects/ericwastaken/python-runn-cli",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/eric/Library/Application Support/JetBrains/PyCharm2025.3/plugins/Shell Script/shellcheck&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/eric/ResilioSync/Develop/projects/ericwastaken/python-runn-cli&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1774152130100" />
     <option name="spentUsd" value="0.004644" />
@@ -84,12 +144,15 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/personal" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.32098.74" />
-        <option value="bundled-python-sdk-1cd77e80b48f-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.32098.74" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-PY-261.26222.68" />
+        <option value="bundled-python-sdk-50341a9f1f9c-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.26222.68" />
       </set>
     </attachedChunks>
   </component>
@@ -104,7 +167,9 @@
       <workItem from="1773293051438" duration="142000" />
       <workItem from="1773442170540" duration="1745000" />
       <workItem from="1774199135640" duration="1872000" />
-      <workItem from="1774668683669" duration="513000" />
+      <workItem from="1774668683669" duration="869000" />
+      <workItem from="1783740316722" duration="88000" />
+      <workItem from="1783740424011" duration="4031000" />
     </task>
     <task id="LOCAL-00001" summary="Python based CLI to manage the RUNN.IO API. Initial version.">
       <option name="closed" value="true" />
@@ -186,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774199847414</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add support for including notes in time entry updates and listing.">
+      <option name="closed" value="true" />
+      <created>1774669437260</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1774669437260</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +273,7 @@
     <MESSAGE value="Update workspace files, add build-system config to pyproject.toml, and enhance README." />
     <MESSAGE value="Exclude personal directory from tracking and updates to workspace files" />
     <MESSAGE value="Workspace files update." />
-    <option name="LAST_COMMIT_MESSAGE" value="Workspace files update." />
+    <MESSAGE value="Add support for including notes in time entry updates and listing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add support for including notes in time entry updates and listing." />
   </component>
 </project>

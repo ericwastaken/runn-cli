@@ -10,6 +10,8 @@ from lib.commands.list_assignments import list_assignments
 from lib.commands.list_actuals import list_actuals
 from lib.commands.set_actuals import set_actuals
 from lib.commands.list_people import list_people
+from lib.commands.add_assignment import add_assignment
+from lib.commands.delete_assignment import delete_assignment
 
 @click.group()
 @click.option('--log-level', 
@@ -44,6 +46,8 @@ cli.add_command(list_assignments)
 cli.add_command(list_actuals)
 cli.add_command(set_actuals)
 cli.add_command(list_people)
+cli.add_command(add_assignment)
+cli.add_command(delete_assignment)
 
 if __name__ == '__main__':
     cli()

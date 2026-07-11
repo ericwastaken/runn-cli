@@ -12,6 +12,26 @@ class Assignment:
     endDate: str
     isBillable: bool
     isNonWorkingDay: bool
+    note: Optional[str] = None
+    phaseId: Optional[int] = None
+    isPlaceholder: Optional[bool] = None
+    workstreamId: Optional[int] = None
+    createdAt: Optional[str] = None
+    updatedAt: Optional[str] = None
+
+@dataclass
+class AssignmentCreate:
+    personId: int
+    projectId: int
+    roleId: int
+    startDate: str
+    endDate: str
+    minutesPerDay: int
+    note: Optional[str] = None
+    isBillable: Optional[bool] = None
+    phaseId: Optional[int] = None
+    workstreamId: Optional[int] = None
+    isNonWorkingDay: bool = False
 
 @dataclass
 class Actual:
